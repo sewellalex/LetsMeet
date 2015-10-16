@@ -1,0 +1,21 @@
+{
+  "name": "LetsMeet",
+  "version": "0.0.0",
+  "homepage": "http://localhost:3000/",
+  "authors": [
+    "sewellalex <alex.g.sewell@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
