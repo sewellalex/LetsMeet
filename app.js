@@ -13,11 +13,7 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.get('/results', function(request, response) {
-  response.sendFile(path.join(__dirname + '/results.html'));
-});
-
-app.get('/results/:longOne', function (request, response) {
+app.get('/results/:longOne/:latOne/:longTwo/:latTwo', function (request, response) {
   console.log(request.params.longOne);
   response.sendFile(path.join(__dirname + '/results.html'));
 });
