@@ -6,8 +6,20 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+app.use(express.static('css'));
+app.use(express.static('js'));
+
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + '/index.html'));
+});
+
+app.get('/results', function(request, response) {
+  response.sendFile(path.join(__dirname + '/results.html'));
+});
+
+app.get('/results/:longOne', function (request, response) {
+  console.log(request.params.longOne);
+  response.sendFile(path.join(__dirname + '/results.html'));
 });
 
 app.listen(1337);
