@@ -3,8 +3,24 @@
  */
 
 function getResults() {
-  var startPoint = {lat: 33.792458, lng: -117.851258};
-  var endPoint = {lat: 33.666913, lng: -117.864160};
+  var yourGeoCoder = new google.maps.Geocoder();
+  var yourAddress = document.getElementById("yourAddress").value;
+  var yourLocation;
+  yourGeoCoder.geocode( { 'address': yourAddress}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK)
+    {
+      yourLocation = results[0].geometry.location;
+    }
+  var friendsGeoCoder = new google.maps.Geocoder();
+  var friendsAddress = document.getElementById('friendsAddress').value;
+  var friendsLocation;
+    friendsGeoCoder.geocode( { 'address': friendsAddress}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK)
+      {
+        friendsLocation = results[0].geometry.location;
+      }
+  var startPoint = yourLocation;
+  var endPoint = friendsLocation;
 
   var map = new google.maps.Map(document.getElementById('map'), {
     center: startPoint,
@@ -31,4 +47,9 @@ function getResults() {
       directionsDisplay.setDirections(response);
     }
   });
+  });
+  });
 }
+
+var submit = document.getElementById('submit');
+submit.addEventListener('click', getResults, false);

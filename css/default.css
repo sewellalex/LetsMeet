@@ -1,8 +1,4 @@
 
-.btn {
-  height: 45px;
-}
-
 .form-group {
   padding-left: 30px;
 }
@@ -70,8 +66,13 @@ opacity: 0.4;
   text-align: center;
 }
 
-#submit {
+#input {
   margin-left: 23%;
+}
+
+#submit {
+  margin-left: 10px;
+  height: 43px;
 }
 
 #results{
@@ -81,6 +82,7 @@ opacity: 0.4;
 }
 
 #map {
+  width: 80%;
   margin-top: 40px;
   height: 400px;
 }
