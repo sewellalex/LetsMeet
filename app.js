@@ -8,14 +8,12 @@ var path = require('path');
 
 app.use(express.static('css'));
 app.use(express.static('js'));
+app.use(express.static('images'));
+app.use(express.static('fonts'));
+
 
 app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + '/index.html'));
-});
-
-app.get('/results/:longOne/:latOne/:longTwo/:latTwo', function (request, response) {
-  console.log(request.params.longOne);
-  response.sendFile(path.join(__dirname + '/results.html'));
 });
 
 app.listen(1337);

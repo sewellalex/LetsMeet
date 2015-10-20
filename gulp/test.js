@@ -11,8 +11,3 @@ gulp.task('test', function() {
       .pipe(mocha({reporter: 'landing'}));
 });
 
-it('status code 200', function(done) {
-  request.get('/')
-      .expect(200)
-      .end(done)
-});

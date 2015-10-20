@@ -3,8 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link rel="stylesheet" href="default.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
 <body>
-  <h1>Hello World</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="opacity"></div>
+      <img id="background" src="coffee-background.jpg">
+    </div>
+    <div class="row col-sm-12">
+      <div class="space">
+      </div>
+    </div>
+    <div class="row col-sm-4 col-sm-offset-3">
+      <h1 id="meet">Meet</h1>
+    </div>
+    <div class="row col-sm-12">
+      <div class="row col-sm-1 col-sm-offset-3">
+        <h1 id="in">In</h1>
+      </div>
+      <div class="row col-sm-2">
+        <img class="img-responsive center-block" id="marker" src="map-marker-icon.png">
+      </div>
+      <div class="row col-sm-1">
+        <h1 id="the">The</h1>
+      </div>
+    </div>
+    <div class="row col-sm-4 col-sm-offset-3">
+      <h1 id="middle">Middle</h1>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row col-sm-12">
+      <h1 id="slogan">Find the perfect place to meet!</h1>
+    </div>
+    <div class="row col-sm-12 center-block">
+      <form class="form-inline col-sm-offset-3" id="submit">
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" id="yourAddress" placeholder="Your Address">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control input-lg" id="friendsAddress" placeholder="Friend's Address">
+        </div>
+        <button type="submit" class="btn btn-default">Let's Meet</button>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row" id="results">
+      <div id="map"></div>
+    </div>
+  </div>
+  <script src="map.js"></script>
+  <script async defer
+          rel="script"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGLpZSoq5C7yrNQvtIWhvCu3ciy-URIk&callback=getResults">
+  </script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
