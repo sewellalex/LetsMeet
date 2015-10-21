@@ -58,7 +58,7 @@ function getResults() {
   //Gets the directionService response and creates a polyline that follows the overview path
     function createPath(directionResult) {
       var path = directionResult.routes[0].overview_path;
-      for (var i = 0; i < path.length; i++) {
+      for (var i = 0; i < path.length - 1; i++) {
         var startMarker = path[i];
         var endMarker = path[i+1];
 
@@ -72,6 +72,13 @@ function getResults() {
         });
         drivePath.setMap(map);
     }
+      console.log(drivePath.getPath());
+      var lengthInMeters = google.maps.geometry.spherical.computeLength(drivePath.getPath());
+      var halfPath = lengthInMeters / 2;
+      console.log(halfPath);
+      var center = drivePath.GetPointAtDistance(halfPath);
+      console.log(center);
+
     }
   });
   });
