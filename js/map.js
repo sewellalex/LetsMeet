@@ -52,7 +52,28 @@ function getResults() {
     if (status == google.maps.DirectionsStatus.OK) {
       // Display the route on the map.
       directionsDisplay.setDirections(response);
-      console.log(directionsService);
+      showSteps(response)
+    }
+
+    function showSteps(directionResult) {
+      var myRoute = directionResult.routes[0].legs[0];
+      console.log(myRoute.steps);
+      for (var i = 0; i < myRoute.steps.length; i++) {
+        var startMarker = myRoute.steps[i].start_location;
+        var endMarker = myRoute.steps[i].end_location;
+        console.log(startMarker);
+        console.log(endMarker);
+
+        var drivePath = new google.maps.Polyline({
+          path: [startMarker, endMarker],
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        drivePath.setMap(map);
+    }
     }
   });
   });
@@ -61,3 +82,12 @@ function getResults() {
 
 var submit = document.getElementById('submit');
 submit.addEventListener('click', getResults, false);
+
+//  polyline = new google.maps.Polyline({
+//    path: [],
+//    strokeColor: '#FF0000',
+//    strokeWeight: 3
+//  });
+//  directionsDisplay.setMap(map);
+//  getResults();
+//}
