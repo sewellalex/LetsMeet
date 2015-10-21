@@ -82,12 +82,3 @@ function getResults() {
 
 var submit = document.getElementById('submit');
 submit.addEventListener('click', getResults, false);
-
-//  polyline = new google.maps.Polyline({
-//    path: [],
-//    strokeColor: '#FF0000',
-//    strokeWeight: 3
-//  });
-//  directionsDisplay.setMap(map);
-//  getResults();
-//}
