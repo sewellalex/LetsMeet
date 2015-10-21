@@ -49,21 +49,20 @@ function getResults() {
   // Pass the directions request to the directions service.
   var directionsService = new google.maps.DirectionsService();
   directionsService.route(request, function(response, status) {
+  // Display the route on the map. Runs createPath function
     if (status == google.maps.DirectionsStatus.OK) {
-      // Display the route on the map.
       directionsDisplay.setDirections(response);
-      showSteps(response)
+      createPath(response)
     }
 
-    function showSteps(directionResult) {
-      var myRoute = directionResult.routes[0].legs[0];
-      console.log(myRoute.steps);
-      for (var i = 0; i < myRoute.steps.length; i++) {
-        var startMarker = myRoute.steps[i].start_location;
-        var endMarker = myRoute.steps[i].end_location;
-        console.log(startMarker);
-        console.log(endMarker);
+  //Gets the directionService response and creates a polyline that follows the overview path
+    function createPath(directionResult) {
+      var path = directionResult.routes[0].overview_path;
+      for (var i = 0; i < path.length; i++) {
+        var startMarker = path[i];
+        var endMarker = path[i+1];
 
+        // Creates the polyline for the map
         var drivePath = new google.maps.Polyline({
           path: [startMarker, endMarker],
           geodesic: true,
@@ -71,7 +70,6 @@ function getResults() {
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
-
         drivePath.setMap(map);
     }
     }
