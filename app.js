@@ -5,6 +5,9 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var search = require('./js/yelp-search.js');
+
+app.use('/search', search);
 
 app.use(express.static('css'));
 app.use(express.static('js'));
