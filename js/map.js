@@ -3,6 +3,7 @@
  */
 
 function getResults() {
+
   // create a new instance of GeoCoder to get users latitude and longitude
   var yourGeoCoder = new google.maps.Geocoder();
   var yourAddress = document.getElementById("yourAddress").value;
@@ -58,32 +59,38 @@ function getResults() {
   //Gets the directionService response and creates a polyline that follows the overview path
     function createPath(directionResult) {
       var path = directionResult.routes[0].overview_path;
-      for (var i = 0; i < path.length - 1; i++) {
-        var startMarker = path[i];
-        var endMarker = path[i+1];
+      var halfOfPath = Math.round(((path.length)-1) / 2);
+      var coordinatesOfHalf = path[halfOfPath];
 
-        // Creates the polyline for the map
-        var drivePath = new google.maps.Polyline({
-          path: [startMarker, endMarker],
-          geodesic: true,
-          strokeColor: '#FF0000',
-          strokeOpacity: 1.0,
-          strokeWeight: 2
-        });
-        drivePath.setMap(map);
-    }
-      console.log(drivePath.getPath());
-      var lengthInMeters = google.maps.geometry.spherical.computeLength(drivePath.getPath());
-      var halfPath = lengthInMeters / 2;
-      console.log(halfPath);
-      var center = drivePath.GetPointAtDistance(halfPath);
-      console.log(center);
+  // Create the marker for the midpoint
+      var marker = new google.maps.Marker({
+        position: coordinatesOfHalf
+      });
 
+// To add the marker to the map, call setMap();
+      marker.setMap(map);
+
+
+      var midpointRadius = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: coordinatesOfHalf,
+        radius: 1609.34
+      });
+
+  // To add the marker to the map, call setMap();
+      midpointRadius.setMap(map);
     }
   });
   });
   });
 }
 
+function onClick() {
 var submit = document.getElementById('submit');
 submit.addEventListener('click', getResults, false);
+}
