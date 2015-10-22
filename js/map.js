@@ -2,7 +2,7 @@
  * Created by alexsewell on 10/19/15.
  */
 
-function getResults() {
+function createMap() {
 
   // create a new instance of GeoCoder to get users latitude and longitude
   var yourGeoCoder = new google.maps.Geocoder();
@@ -35,7 +35,7 @@ function getResults() {
     zoom: 16
   });
 
-  // creates rendering of direction
+  // creates new instance of directions renderer
   var directionsDisplay = new google.maps.DirectionsRenderer({
     map: map
   });
@@ -56,34 +56,35 @@ function getResults() {
       createPath(response)
     }
 
-  //Gets the directionService response and creates a polyline that follows the overview path
+  //Gets the directionService response and creates a circle 2 miles in diameter at the midpoint of the path
     function createPath(directionResult) {
       var path = directionResult.routes[0].overview_path;
-      var halfOfPath = Math.round(((path.length)-1) / 2);
-      var coordinatesOfHalf = path[halfOfPath];
+      var pathMidpoint = Math.round(((path.length)-1) / 2);
+      var midpointCoordinates = path[pathMidpoint];
 
-  // Create the marker for the midpoint
-      var marker = new google.maps.Marker({
-        position: coordinatesOfHalf
-      });
-
-// To add the marker to the map, call setMap();
-      marker.setMap(map);
-
-
-      var midpointRadius = new google.maps.Circle({
+      var midpointCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#FF0000',
         fillOpacity: 0.35,
         map: map,
-        center: coordinatesOfHalf,
+        center: midpointCoordinates,
         radius: 1609.34
       });
 
-  // To add the marker to the map, call setMap();
-      midpointRadius.setMap(map);
+  // Add the marker to the map, call setMap();
+      midpointCircle.setMap(map);
+
+  // Use geocoder to reverse coordinates into address
+      var geoCoder = new google.maps.Geocoder;
+      geoCoder.geocode({'location': midpointCoordinates}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+          var midpointAddress = (results[1].formatted_address);
+          console.log(midpointAddress);
+          yelpResults(midpointAddress);
+        }
+      });
     }
   });
   });
@@ -92,5 +93,5 @@ function getResults() {
 
 function onClick() {
 var submit = document.getElementById('submit');
-submit.addEventListener('click', getResults, false);
+submit.addEventListener('click', createMap, false);
 }
