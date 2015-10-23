@@ -7,7 +7,7 @@ var yelp=require("node-yelp");
 
 var yelpSearch=express.Router();
 
-yelpSearch.get('/data/:address', function(req,res){
+yelpSearch.get('/data/:coordinates', function(req,res){
   var client = yelp.createClient({
     oauth: {
       "consumer_key": "9XFKuwBCaeq4dB4zCC_qpA",
@@ -18,12 +18,12 @@ yelpSearch.get('/data/:address', function(req,res){
   });
 
   client.search({
-    location: req.params.address,
+    ll: req.params.coordinates,
     term: 'restaurant',
-    limit:"4",
-    sort: "0",
-    category_filter:"restaurants",
-    radius_filter:"1609"
+    limit: 4,
+    sort: 0,
+    category_filter: "restaurants",
+    radius_filter: 1609
   }).then(function(data) {
     res.send(data);
   });

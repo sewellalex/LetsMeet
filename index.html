@@ -15,46 +15,38 @@
       <div id="opacity"></div>
       <img id="background" src="coffee-background.jpg">
     </div>
-    <div class="row col-sm-12">
-      <div class="space">
+    <div class="row col-xs-12" id="meet">Meet</div>
+    <div class="row">
+      <!--<div class="col-xs-1"></div>-->
+      <!--<div class="col-xs-1" id="in">In</div>-->
+      <div class="col-xs-12 center-block">
+        <p id="name">In<img class="img-responsive" id="marker" src="map-marker-icon.png">The</p>
       </div>
+      <!--<div class="col-xs-1" id="the">The</div>-->
     </div>
-    <div class="row col-sm-4 col-sm-offset-3">
-      <h1 id="meet">Meet</h1>
-    </div>
-    <div class="row col-sm-12">
-      <div class="row col-sm-1 col-sm-offset-3">
-        <h1 id="in">In</h1>
-      </div>
-      <div class="row col-sm-2">
-        <img class="img-responsive center-block" id="marker" src="map-marker-icon.png">
-      </div>
-      <div class="row col-sm-1">
-        <h1 id="the">The</h1>
-      </div>
-    </div>
-    <div class="row col-sm-4 col-sm-offset-3">
-      <h1 id="middle">Middle</h1>
-    </div>
+    <div class="row col-xs-12" id="middle">Middle</div>
   </div>
   <div class="container-fluid">
     <div class="row col-sm-12">
       <h1 id="slogan">Find the perfect place to meet!</h1>
     </div>
-    <div class="row col-sm-12 center-block">
-      <form class="form-inline col-sm-offset-3" id="input">
-        <div class="form-group">
+    <div class="row">
+      <form class="form" id="input">
+        <div class="form-group col-xs-12 col-md-6 col-lg-6">
           <input type="text" class="form-control input-lg" id="yourAddress" placeholder="Your Address">
         </div>
-        <div class="form-group">
+        <div class="form-group col-xs-12 col-md-6 col-lg-6">
           <input type="email" class="form-control input-lg" id="friendsAddress" placeholder="Friend's Address">
         </div>
-        <button type="button" class="btn btn-default" id="submit">Let's Meet</button>
+        <div class="row col-xs-12">
+          <button type="button" class="btn btn-default center-block" id="submit">Let's Meet</button>
+        </div>
       </form>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row" id="results">
+  <div class="container-fluid" id="results">
+    <div class="row col-xs-12" id="title">Results</div>
+    <div class="row">
       <div class="center-block" id="map"></div>
     </div>
   </div>

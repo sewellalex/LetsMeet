@@ -1,9 +1,9 @@
 /**
  * Created by alexsewell on 10/22/15.
  */
-function yelpResults(address) {
+function yelpResults(coordinates) {
   var request = new XMLHttpRequest();
-  request.open("GET", "/search/data/" + address, true);
+  request.open("GET", "/search/data/" + coordinates, true);
   request.send();
   request.addEventListener('load', function() {
     var getData = JSON.parse(request.responseText);

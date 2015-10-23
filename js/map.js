@@ -4,6 +4,10 @@
 
 function createMap() {
 
+  //display results div
+  var results = document.getElementById('results');
+  results.style.display='block';
+
   // create a new instance of GeoCoder to get users latitude and longitude
   var yourGeoCoder = new google.maps.Geocoder();
   var yourAddress = document.getElementById("yourAddress").value;
@@ -76,15 +80,9 @@ function createMap() {
   // Add the marker to the map, call setMap();
       midpointCircle.setMap(map);
 
-  // Use geocoder to reverse coordinates into address
-      var geoCoder = new google.maps.Geocoder;
-      geoCoder.geocode({'location': midpointCoordinates}, function(results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-          var midpointAddress = (results[1].formatted_address);
-          console.log(midpointAddress);
-          yelpResults(midpointAddress);
-        }
-      });
+  // Get the coordinates of the midpoint and run yelpResults function
+      var coordinates = midpointCoordinates.toString().slice(1,30);
+      yelpResults(coordinates);
     }
   });
   });
