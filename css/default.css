@@ -65,18 +65,41 @@ opacity: 0.4;
 
 #results {
   display: none;
-  height: 600px;
+  height: 800px;
   margin-top: 70px;
   background-color: #f5f5f5;
 }
 
 #title {
   text-align: center;
-  font-size: 650%;
+  font-size: 500%;
 }
 
 #map {
   width: 80%;
   margin-top: 40px;
-  height: 400px;
+  height: 300px;
+}
+
+.restaurant-name {
+  margin-top: 10px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.restaurant-image {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 120px;
+  width: 120px;
+}
+
+.restaurant-address {
+  text-align: center;
+  margin-bottom: -5px;
+}
+
+.share-location {
+  margin-top: 5px;
+  text-align: center;
 }
