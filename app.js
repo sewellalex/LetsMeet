@@ -19,5 +19,6 @@ app.get('/', function(request, response) {
   response.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.listen(1337);
-console.log('1337 is the magic port!!');
+app.listen(process.env.PORT || 3000, function() {
+  console.log("listening on 3000");
+});
