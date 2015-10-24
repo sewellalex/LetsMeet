@@ -2,13 +2,13 @@
  * Created by alexsewell on 10/22/15.
  */
 
-function showResults(name, image, addressOne, addressTwo, rating) {
+function showResults(name, image, addressOne, addressTwo, restaurantRating) {
   var displayRestaurants = document.getElementById('restaurants');
   //for (var create = 0; create < 4; create++) {
 
   // Create four columns
   var createCol = document.createElement('div');
-  createCol.setAttribute('class', 'col-md-3');
+  createCol.setAttribute('class', 'col-xs-12 col-sm-6 col-md-3');
   displayRestaurants.appendChild(createCol);
 
   // Create restaurant name
@@ -37,6 +37,13 @@ function showResults(name, image, addressOne, addressTwo, rating) {
   createAddress.appendChild(address);
   var addressNumberText = document.createTextNode(addressTwo);
   address.appendChild(addressNumberText);
+
+  // Create yelp ranking
+  var rating = document.createElement('img');
+  rating.setAttribute('class', 'rating center-block');
+  rating.setAttribute('src', restaurantRating);
+  createCol.appendChild(rating);
+
 
   // Create share link
   var shareLink = document.createElement('a');
